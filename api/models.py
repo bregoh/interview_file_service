@@ -10,7 +10,7 @@ class FilesManagement(models.Model):
     file_id = models.UUIDField(primary_key=True, default=uuid.uuid4, unique=True)
     name = models.CharField(max_length=200)
     file = models.FileField(upload_to="media/uploads", null=False)
-    created = models.DateTimeField(default=timezone)
+    created = models.DateTimeField(default=timezone.now)
 
     class Meta:
         db_table = "filesmanagement"

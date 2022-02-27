@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>File Sharing</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+  </head>
+  <body>
+    <div
+      class="container d-flex justify-content-center align-items-center flex-column main-container"
+    >
+      <h1 class="content-lg-header">File Sharing</h1>
+      <span class="content-sm-header">Please download the link</span>
+      <div class="content">
+        <div class="content-name">File name</div>
+        <div class="content-btn">
+          <button class="btn btn-md btn-warning">Download</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
