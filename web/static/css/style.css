@@ -1,0 +1,12 @@
+.main-container {
+  margin: 20px auto;
+}
+
+.content-sm-header {
+  font-size: small;
+  font-style: italic;
+}
+
+.content {
+  margin-top: 50px;
+}

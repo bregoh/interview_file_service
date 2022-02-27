@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>File Sharing</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+  </head>
+  <body>
+    <div class="main-container">
+      <h1 class="content-lg-header">File Sharing</h1>
+      <span class="content-sm-header">Please enter password to view file</span>
+      <form>
+        <div class="row">
+          <div class="col">
+            <input
+              type="password"
+              class="form-control"
+              placeholder="password"
+            />
+          </div>
+          <div class="col">
+            <button type="submit" class="btn btn-primary">Sign in</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    {% load static %}
+    <script
+      type="text/javascript"
+      src="{% static 'js/bootstrap.min.js' %}"
+    ></script>
+  </body>
+</html>
