@@ -10,3 +10,18 @@
 .content {
   margin-top: 50px;
 }
+
+.card {
+  margin-bottom: 50px;
+}
+
+.card-span {
+  font-size: small;
+  margin-right: 7px;
+  font-weight: bold;
+}
+
+.card-link,
+.card-pwd {
+  font-size: small;
+}
