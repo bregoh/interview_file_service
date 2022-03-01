@@ -1,8 +1,7 @@
 from django.urls import path
-from web.views import index, login, upload
+from web.views import indexPage, uploadPage
 
 urlpatterns = [
-    path("", index, name="home-page"),
-    path("login", login, name="login-page"),
-    path("upload", upload, name="login-page"),
+    path("", indexPage, name="home-page"),
+    path("uploads", uploadPage, name="upload-page"),
 ]

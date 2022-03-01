@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>File Sharing</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+  </head>
+  <body>
+    <div
+      class="container d-flex justify-content-center align-items-center flex-column main-container"
+    >
+      <h1 class="content-lg-header">File Sharing</h1>
+      <span class="content-sm-header">Please download the link</span>
+      <div class="content">
+        <div class="card" id="card" style="width: 22rem">
+          <div class="card-body">
+            <h5 class="card-title">{{data.name}}</h5>
+            <p class="card-text">
+              <span class="card-span">Created Date: </span>
+              <span class="card-link">{{data.created}}</span>
+            </p>
+            <p class="card-text">
+              <span class="card-span">Expiry Date: </span
+              ><span class="card-pwd" id="card-pwd"
+                >{{expiry_date|date:'Y-m-d H:i:s'}}</span
+              >
+            </p>
+            <a href="{{data.file}}" class="btn btn-md btn-warning" download
+              >Download</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
