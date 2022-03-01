@@ -29,6 +29,12 @@
                 >{{expiry_date|date:'Y-m-d H:i:s'}}</span
               >
             </p>
+            <p class="card-text">
+              <span class="card-span">Link Visits: </span
+              ><span class="card-pwd" id="card-pwd"
+                >{{data.filelinks.0.link_visit}}</span
+              >
+            </p>
             <a href="{{data.file}}" class="btn btn-md btn-warning" download
               >Download</a
             >
