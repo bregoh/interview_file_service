@@ -1,4 +1,5 @@
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -11,7 +12,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-e@-$wi+si&u@cvep!_q!xl9u!oznt0w$sf%ps71(_fcc22g#)v"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -109,6 +110,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = "static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
 MEDIA_URL = "media/"
 
 # Default primary key field type
@@ -117,3 +119,9 @@ MEDIA_URL = "media/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 USER_AGENTS_CACHE = "default"
+
+REST_FRAMEWORK = {
+    "DEFAULT_RENDERER_CLASSES": (  # disable the default browsable api, remove this to enable it
+        "rest_framework.renderers.JSONRenderer",
+    ),
+}

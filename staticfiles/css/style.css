@@ -1,0 +1,27 @@
+.main-container {
+  margin: 20px auto;
+}
+
+.content-sm-header {
+  font-size: small;
+  font-style: italic;
+}
+
+.content {
+  margin-top: 50px;
+}
+
+.card {
+  margin-bottom: 50px;
+}
+
+.card-span {
+  font-size: small;
+  margin-right: 7px;
+  font-weight: bold;
+}
+
+.card-link,
+.card-pwd {
+  font-size: small;
+}
