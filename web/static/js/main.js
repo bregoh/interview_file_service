@@ -1,8 +1,12 @@
 
+const protocol = location.protocol + '//' + window.location.host + '/'
+
+
 async function deleteImage(id) {
     const token = document.querySelector("input[name=csrfmiddlewaretoken]").value;
+    console.log(token)
     
-    const result = await fetch(`http://localhost:8000/home/${id}`, {
+    const result = await fetch(`${protocol}api/delete-file/${id}`, {
         method: "DELETE",
         headers: {
             'X-CSRFToken': token
@@ -34,7 +38,7 @@ async function generateLink() {
     const file_id = document.getElementById('file_id').value;
     const password = document.getElementById('pwd').value;
     
-    const response = await fetch(`http://localhost:8000/api/create-link`, {
+    const response = await fetch(`${protocol}api/create-link`, {
         method: "POST",
         headers: {
             'X-CSRFToken': token,
@@ -45,7 +49,6 @@ async function generateLink() {
     
     if(response.status === 201){
         const result = await response.json();
-        const protocol = location.protocol + '//' + window.location.host + '/'
         document.getElementById("card-link").innerHTML = protocol + result.data.link
         document.getElementById("card-link").href = protocol + result.data.link
         document.getElementById("card-pwd").innerHTML = result.data.password
@@ -63,7 +66,7 @@ async function uploadFile(e) {
 
     formData.append("files_to_upload", fileField.files[0]);
 
-    const result = await fetch('http://localhost:8000/api/upload', {
+    const result = await fetch(`${protocol}api/upload`, {
         method: "POST",
         headers: {
             'X-CSRFToken': token

@@ -1,9 +1,11 @@
 from rest_framework.response import Response
-from rest_framework.generics import ListCreateAPIView, CreateAPIView
+from rest_framework.generics import ListCreateAPIView, CreateAPIView, DestroyAPIView
 from rest_framework import status
 from api.models import FilesManagement
 from api.serializers import FileLinkSerializers, FileSerializer
-from api.service import generate_link, generate_password
+from api.service import generate_link
+from django.dispatch.dispatcher import receiver
+from django.db.models.signals import pre_delete
 
 
 class UploadView(ListCreateAPIView):
@@ -48,3 +50,18 @@ class ManageFileView(CreateAPIView):
             {"error": str(serializer.error_messages)},
             status=status.HTTP_400_BAD_REQUEST,
         )
+
+
+class DeleteFileView(DestroyAPIView):
+    def delete(self, request, *args, **kwargs):
+        file_id = kwargs["file_id"]
+        FilesManagement.objects.filter(file_id=file_id).delete()
+        return Response(
+            {"message": "Deleted Successfully"}, status=status.HTTP_204_NO_CONTENT
+        )
+
+
+@receiver(pre_delete, sender=FilesManagement)
+def deleteImages(sender, instance, **kwargs):
+    # parse False to prevent FileField from saving the model
+    instance.file.delete(False)

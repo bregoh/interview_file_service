@@ -73,7 +73,6 @@
               <th scope="col">#</th>
               <th scope="col">Name</th>
               <th scope="col">No. of Links</th>
-              <th scope="col">No. of Visits</th>
               <th scope="col">added</th>
               <th scope="col">Action</th>
             </tr>
@@ -84,8 +83,7 @@
               <th scope="row">{{forloop.counter}}</th>
               <td>{{ item.name }}</td>
               <td>{{ item.filelinks|length }}</td>
-              <td>{{ item.file_visit }}</td>
-              <td>{{ '2022-02-28 19:16:27' }}</td>
+              <td>{{ item.created }}</td>
               <td>
                 <button
                   type="button"
@@ -93,16 +91,6 @@
                   onclick="togglePasswordInput('{{ item.file_id }}')"
                 >
                   generate link
-                </button>
-                <button
-                  type="button"
-                  class="btn btn-sm btn-warning"
-                  data-toggle="collapse"
-                  data-target="#collapseExample"
-                  aria-expanded="false"
-                  aria-controls="collapseExample"
-                >
-                  view file history
                 </button>
                 <button
                   type="button"
@@ -121,15 +109,6 @@
           </tbody>
         </table>
       </div>
-
-      <div class="collapse" id="collapseExample">
-        <div class="card card-body">
-          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
-          terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer
-          labore wes anderson cred nesciunt sapiente ea proident.
-        </div>
-      </div>
-    </div>
 
     {% load static %}
     <script type="text/javascript" src="{% static 'js/main.js' %}"></script>

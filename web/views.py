@@ -1,10 +1,12 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 from django.utils import timezone
 from django.shortcuts import render, redirect
 from api.models import FileLinks, FilesManagement, UserAgent
 from api.serializers import FileSerializer
 
 
+# function to check if the date difference
+# between the current time and the file create time
 def checkLinkIsValid(oldDate):
     date_format_str = "%Y-%m-%d %H:%M:%S"
     current_datetime = timezone.make_naive(timezone.now(), timezone.utc).strftime(
@@ -18,6 +20,12 @@ def checkLinkIsValid(oldDate):
         return False
 
     return True
+
+
+def incrementDateByOneDay(date):
+    formattedDate = datetime.strptime(date, "%Y-%m-%d %H:%M:%S")
+    increment = formattedDate + timedelta(days=1)
+    return increment
 
 
 def uploadPage(request):
@@ -46,8 +54,8 @@ def loginPage(request, file_id):
     link_visit = file_link["link_visit"] + 1
 
     # check if link has expired, if expired then update the link
-    # if not checkLinkIsValid(file_link["created"]):
-    #     FileLinks.objects.filter(id=file_link_id).update(is_expired=True)
+    if not checkLinkIsValid(file_link["created"]):
+        FileLinks.objects.filter(id=file_link_id).update(is_expired=True)
 
     # check if useragent exists
     useragent = UserAgent.objects.filter(
@@ -57,6 +65,7 @@ def loginPage(request, file_id):
     # set the file info to context
     context["data"] = serializer.data
     context["url"] = file_url
+    context["expiry_date"] = incrementDateByOneDay(serializer.data["created"])
 
     # check if user has already visited the file
     if useragent:
