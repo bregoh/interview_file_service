@@ -14,11 +14,39 @@
 - An open endpoint to access secure items (if the password was correct)
 - Admin panel
 
-## How to Use
+## How to run locally
 
 - Clone the repository
+
+- `python3 -m venv <environment-name>`
+
+### windows
+
+- > `<environment-name>/Scripts/activate`
+
+### mac and linux
+
+- > `source <environment-name>/bin/activate`
+
+- `pip install -r requirements.txt`
+- `python3 manage.py migrate`
+- `python3 manage.py createsuperuser` - fill the prompt input
+- `python3 manage.py runserver`
+
+## How to run with docker
+
 - Run `docker compose up`
 
 ## How to Run Tests
 
-- Run `docker compose -f docker-compose-test.yml up`
+### locally
+
+- `python3 manage.py test`
+
+### with docker compose
+
+- `docker compose -f docker-compose-test.yml up`
+
+## How to run via web
+
+- open this url: https://bregoh-filemanager.herokuapp.com/web/
