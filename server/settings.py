@@ -14,7 +14,7 @@ SECRET_KEY = "$wi+si&u@cvep!_q!xl9u!oznt0w$sf%ps71(_fcc22g#)v"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["bregoh-filemanager.herokuapp.com/"]
 
 
 # Application definition
