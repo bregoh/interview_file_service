@@ -35,17 +35,14 @@
 
 ## How to run with docker
 
-- Run `docker compose up`
+- Run `docker pull bregoh/file_sharing_app:latest`
+- RUN `docker run -p 8000:8000 bregoh/file_sharing_app:latest`
 
 ## How to Run Tests
 
 ### locally
 
 - `python3 manage.py test`
-
-### with docker compose
-
-- `docker compose -f docker-compose-test.yml up`
 
 ## How to run via web
 

@@ -19,11 +19,11 @@ RUN apt-get update \
 WORKDIR /usr/src/app
 
 # copy dependencies file
-COPY requirements.txt .
+COPY . .
 
 # install dependencies
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-# start server  
-CMD python manage.py runserver 
+
+CMD [ "python", "manage.py", "runserver" ]
