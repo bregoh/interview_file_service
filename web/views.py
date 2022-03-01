@@ -84,8 +84,9 @@ def loginPage(request, file_id):
         return render(request, "login.html", context=context)
 
     # render the file page
-    FileLinks.objects.filter(id=file_link_id).update(link_visit=link_visit)
-    UserAgent(os=os, browser=browser, link_id=file_link_id).save()
+    file_link_instance = FileLinks.objects.filter(id=file_link_id)
+    file_link_instance.update(link_visit=link_visit)
+    UserAgent.objects.create(os=os, browser=browser, link_id=file_link_instance.first())
     return render(request, "file.html", context=context)
 
 

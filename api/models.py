@@ -35,7 +35,9 @@ class UserAgent(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, unique=True)
     os = models.CharField(max_length=200)
     browser = models.CharField(max_length=200)
-    link_id = models.UUIDField(null=True)
+    link_id = models.ForeignKey(
+        FileLinks, related_name="useragent", on_delete=models.CASCADE, null=True
+    )
 
     class Meta:
         db_table = "useragent"
